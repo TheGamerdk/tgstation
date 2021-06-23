@@ -44,7 +44,6 @@
 /obj/structure/alien/weeds,
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/item/clothing/mask/facehugger/impregnated,
 /obj/item/gun/ballistic/automatic/pistol,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/xenonest)
@@ -52,11 +51,6 @@
 /obj/structure/alien/weeds,
 /obj/structure/alien/resin/wall,
 /obj/structure/alien/resin/wall,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/ruin/unpowered/xenonest)
-"s" = (
-/obj/structure/alien/weeds,
-/obj/structure/alien/egg,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/xenonest)
 "t" = (
@@ -89,8 +83,7 @@
 /obj/structure/alien/weeds,
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/item/clothing/mask/facehugger/impregnated,
-/obj/item/clothing/under/rank/security,
+/obj/item/clothing/under/rank/security/officer,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/melee/baton/loaded,
 /obj/item/clothing/head/helmet,
@@ -138,7 +131,6 @@
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/blood,
-/obj/item/clothing/mask/facehugger/impregnated,
 /obj/item/clothing/under/syndicate,
 /obj/item/clothing/glasses/night,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -163,12 +155,7 @@
 /obj/item/clothing/suit/space/syndicate/orange,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/head/helmet/space/syndicate/orange,
-/obj/item/clothing/mask/facehugger/impregnated,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/ruin/unpowered/xenonest)
-"O" = (
-/obj/structure/alien/weeds/node,
-/turf/template_noop,
 /area/ruin/unpowered/xenonest)
 "Q" = (
 /obj/structure/alien/weeds,
@@ -178,9 +165,14 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/xenonest)
-"R" = (
+"Y" = (
 /obj/structure/alien/weeds,
-/turf/template_noop,
+/obj/structure/alien/resin/wall{
+	move_force = 1000;
+	move_resist = 3000;
+	pull_force = 1000
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/xenonest)
 
 (1,1,1) = {"
@@ -260,7 +252,7 @@ b
 g
 g
 b
-b
+Y
 G
 a
 a
@@ -384,7 +376,7 @@ e
 t
 g
 g
-s
+g
 H
 u
 g
@@ -415,9 +407,9 @@ b
 i
 u
 b
-s
+g
 l
-s
+g
 t
 e
 b
@@ -448,7 +440,7 @@ o
 v
 g
 b
-s
+g
 g
 e
 b
@@ -812,7 +804,7 @@ b
 b
 g
 g
-g
+f
 b
 b
 a
@@ -1074,8 +1066,8 @@ g
 g
 g
 b
-O
-R
+l
+g
 g
 g
 "}
@@ -1106,8 +1098,8 @@ b
 g
 l
 b
-O
-R
+l
+f
 g
 g
 "}

@@ -1,6 +1,6 @@
 /obj/effect/projectile/impact
 	name = "beam impact"
-	icon = 'icons/obj/projectiles_impact.dmi'
+	icon = 'icons/obj/guns/projectiles_impact.dmi'
 
 /obj/effect/projectile/impact/laser
 	name = "laser impact"
@@ -33,3 +33,10 @@
 /obj/effect/projectile/impact/heavy_laser
 	name = "heavy laser impact"
 	icon_state = "impact_beam_heavy"
+
+/obj/effect/projectile/impact/wormhole
+	icon_state = "wormhole_g"
+
+/obj/effect/projectile/impact/laser/emitter
+	name = "emitter impact"
+	icon_state = "impact_emitter"

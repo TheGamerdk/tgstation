@@ -2,6 +2,7 @@
 	name = "Emplosion"
 	desc = "This spell emplodes an area."
 
+	school = SCHOOL_EVOCATION
 	var/emp_heavy = 2
 	var/emp_light = 3
 
@@ -9,7 +10,7 @@
 	sound = 'sound/weapons/zapbang.ogg'
 
 /obj/effect/proc_holder/spell/targeted/emplosion/cast(list/targets,mob/user = usr)
-	playsound(get_turf(user), sound, 50,1)
+	playsound(get_turf(user), sound, 50,TRUE)
 	for(var/mob/living/target in targets)
 		if(target.anti_magic_check())
 			continue

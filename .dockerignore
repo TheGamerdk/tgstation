@@ -1,6 +1,5 @@
 .dockerignore
 .editorconfig
-.travis.yml
 GPLv3.txt
 LICENSE
 README.md
@@ -14,16 +13,15 @@ TGS3.json
 .git/objects
 .git/refs
 .vs*
-tools
 cfg
 data
 SQL
-tgui/node_modules
+node_modules
 tgstation.dmb
 tgstation.int
 tgstation.rsc
 tgstation.lk
 tgstation.dyn.rsc
-libmariadb.dll
-rust_g.dll
+*.dll
 Dockerfile
+tools/bootstrap/.cache

@@ -15,7 +15,7 @@
 				<b>Function:</b> [spell ? "Allows a non-wizard to cast [spell] as if they were a wizard." : "None"]"}
 	return dat
 
-/obj/item/implant/spell/implant(mob/living/target, mob/user, silent = FALSE)
+/obj/item/implant/spell/implant(mob/living/target, mob/user, silent = FALSE, force = FALSE)
 	. = ..()
 	if (.)
 		if (!spell)
@@ -30,7 +30,7 @@
 	if (.)
 		target.RemoveSpell(spell)
 		if(target.stat != DEAD && !silent)
-			to_chat(target, "<span class='boldnotice'>The knowledge of how to cast [spell] slips out from your mind.</span>")
+			to_chat(target, span_boldnotice("The knowledge of how to cast [spell] slips out from your mind."))
 
 /obj/item/implanter/spell
 	name = "implanter (spell)"

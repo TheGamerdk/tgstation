@@ -19,9 +19,11 @@
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY,.proc/action)
 	update_parent(index)
 
-/datum/component/construction/proc/examine(mob/user)
+/datum/component/construction/proc/examine(datum/source, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+
 	if(desc)
-		to_chat(user, desc)
+		examine_list += desc
 
 /datum/component/construction/proc/on_step()
 	if(index > steps.len)
@@ -29,8 +31,10 @@
 	else
 		update_parent(index)
 
-/datum/component/construction/proc/action(obj/item/I, mob/living/user)
-	return check_step(I, user)
+/datum/component/construction/proc/action(datum/source, obj/item/I, mob/living/user)
+	SIGNAL_HANDLER
+
+	return INVOKE_ASYNC(src, .proc/check_step, I, user)
 
 /datum/component/construction/proc/update_index(diff)
 	index += diff

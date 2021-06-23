@@ -3,7 +3,7 @@
 	name = "magboots"
 	icon_state = "magboots0"
 	var/magboot_state = "magboots"
-	var/magpulse = 0
+	var/magpulse = FALSE
 	var/slowdown_active = 2
 	permeability_coefficient = 0.05
 	actions_types = list(/datum/action/item_action/toggle)
@@ -29,9 +29,10 @@
 		slowdown = slowdown_active
 	magpulse = !magpulse
 	icon_state = "[magboot_state][magpulse]"
-	to_chat(user, "<span class='notice'>You [magpulse ? "enable" : "disable"] the mag-pulse traction system.</span>")
-	user.update_inv_shoes()	//so our mob-overlays update
+	to_chat(user, span_notice("You [magpulse ? "enable" : "disable"] the mag-pulse traction system."))
+	user.update_inv_shoes() //so our mob-overlays update
 	user.update_gravity(user.has_gravity())
+	user.update_equipment_speed_mods() //we want to update our speed so we arent running at max speed in regular magboots
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.UpdateButtonIcon()
@@ -40,8 +41,8 @@
 	return clothing_flags & NOSLIP
 
 /obj/item/clothing/shoes/magboots/examine(mob/user)
-	..()
-	to_chat(user, "Its mag-pulse traction system appears to be [magpulse ? "enabled" : "disabled"].")
+	. = ..()
+	. += "Its mag-pulse traction system appears to be [magpulse ? "enabled" : "disabled"]."
 
 
 /obj/item/clothing/shoes/magboots/advance

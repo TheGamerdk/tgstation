@@ -68,7 +68,7 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/transport)
 "ar" = (
-/obj/structure/chair/shuttle,
+/obj/structure/chair/comfy/shuttle,
 /turf/open/floor/wood,
 /area/shuttle/transport)
 "as" = (
@@ -85,15 +85,6 @@
 "av" = (
 /obj/machinery/door/airlock/wood,
 /turf/open/floor/wood,
-/area/shuttle/transport)
-"aw" = (
-/obj/effect/spawner/structure/window/shuttle,
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/transport)
-"ay" = (
-/obj/structure/window/shuttle,
-/obj/structure/grille,
-/turf/open/floor/plating,
 /area/shuttle/transport)
 "az" = (
 /obj/effect/spawner/structure/window/shuttle,
@@ -126,9 +117,7 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/transport)
 "aH" = (
-/obj/machinery/newscaster{
-	pixel_y = 30
-	},
+/obj/machinery/newscaster/directional/north,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/transport)
 "aI" = (
@@ -137,7 +126,7 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/transport)
 "aJ" = (
-/obj/structure/chair/shuttle,
+/obj/structure/chair/comfy/shuttle,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/transport)
 "aK" = (
@@ -179,7 +168,7 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/transport)
 "aR" = (
-/obj/structure/chair/office/dark{
+/obj/structure/chair/office{
 	dir = 4
 	},
 /turf/open/floor/wood,
@@ -204,7 +193,7 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/transport)
 "aW" = (
-/obj/structure/chair/shuttle{
+/obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
 /turf/open/floor/mineral/titanium/blue,
@@ -212,10 +201,6 @@
 "aX" = (
 /obj/structure/window/fulltile,
 /turf/open/floor/mineral/titanium/blue,
-/area/shuttle/transport)
-"aY" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/closed/wall/mineral/titanium,
 /area/shuttle/transport)
 "ba" = (
 /obj/machinery/conveyor{
@@ -241,7 +226,7 @@
 /turf/open/floor/wood,
 /area/shuttle/transport)
 "bd" = (
-/obj/item/twohanded/required/kirbyplants/dead{
+/obj/item/kirbyplants/dead{
 	desc = "It doesn't look very healthy...";
 	name = "potted plant"
 	},
@@ -523,7 +508,7 @@ aa
 aa
 aa
 aa
-aw
+az
 aE
 aN
 aE
@@ -541,7 +526,7 @@ aa
 aa
 aa
 aa
-aw
+az
 aE
 aE
 aE
@@ -563,7 +548,7 @@ ad
 ak
 aE
 ak
-aY
+ad
 aa
 aa
 aa
@@ -581,7 +566,7 @@ ad
 aF
 aE
 aT
-aw
+az
 aa
 aa
 aa
@@ -631,11 +616,11 @@ aa
 aa
 aa
 aa
-ay
+az
 aI
 aE
 aW
-ay
+az
 aa
 aa
 aa
@@ -758,9 +743,9 @@ aa
 aa
 aa
 ad
-ay
+az
 aO
-ay
+az
 ad
 aa
 aa

@@ -1,7 +1,8 @@
 /datum/antagonist/disease
 	name = "Sentient Disease"
 	roundend_category = "diseases"
-	antagpanel_category = "Disease"
+	antagpanel_category = "Biohazards"
+	show_to_ghosts = TRUE
 	var/disease_name = ""
 
 /datum/antagonist/disease/on_gain()
@@ -10,18 +11,16 @@
 	var/datum/objective/O = new /datum/objective/disease_infect()
 	O.owner = owner
 	objectives += O
-	owner.objectives += O
 
 	O = new /datum/objective/disease_infect_centcom()
 	O.owner = owner
 	objectives += O
-	owner.objectives += O
 
 	. = ..()
 
 /datum/antagonist/disease/greet()
-	to_chat(owner.current, "<span class='notice'>You are the [owner.special_role]!</span>")
-	to_chat(owner.current, "<span class='notice'>Infect members of the crew to gain adaptation points, and spread your infection further.</span>")
+	to_chat(owner.current, span_notice("You are the [owner.special_role]!"))
+	to_chat(owner.current, span_notice("Infect members of the crew to gain adaptation points, and spread your infection further."))
 	owner.announce_objectives()
 
 /datum/antagonist/disease/apply_innate_effects(mob/living/mob_override)
@@ -47,9 +46,9 @@
 	var/count = 1
 	for(var/datum/objective/objective in objectives)
 		if(objective.check_completion())
-			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [span_greentext("Success!")]"
 		else
-			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [span_redtext("Fail.")]"
 			win = FALSE
 		count++
 
@@ -58,9 +57,9 @@
 	var/special_role_text = lowertext(name)
 
 	if(win)
-		result += "<span class='greentext'>The [special_role_text] was successful!</span>"
+		result += span_greentext("The [special_role_text] was successful!")
 	else
-		result += "<span class='redtext'>The [special_role_text] has failed!</span>"
+		result += span_redtext("The [special_role_text] has failed!")
 
 	if(istype(owner.current, /mob/camera/disease))
 		var/mob/camera/disease/D = owner.current

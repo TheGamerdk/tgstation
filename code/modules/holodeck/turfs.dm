@@ -1,7 +1,9 @@
 /turf/open/floor/holofloor
 	icon_state = "floor"
+	holodeck_compatible = TRUE
 	thermal_conductivity = 0
 	flags_1 = NONE
+	var/direction = SOUTH
 
 /turf/open/floor/holofloor/attackby(obj/item/I, mob/living/user)
 	return // HOLOFLOOR DOES NOT GIVE A FUCK
@@ -19,15 +21,44 @@
 	name = "holodeck projector floor"
 	icon_state = "engine"
 
+/turf/open/floor/holofloor/chapel
+	name = "chapel floor"
+	icon_state = "chapel"
+
+/turf/open/floor/holofloor/chapel/bottom_left
+	direction = WEST
+
+/turf/open/floor/holofloor/chapel/top_right
+	direction = EAST
+
+/turf/open/floor/holofloor/chapel/bottom_right
+
+/turf/open/floor/holofloor/chapel/top_left
+	direction = NORTH
+
+/turf/open/floor/holofloor/chapel/Initialize(mapload)
+	. = ..()
+	if (direction != SOUTH)
+		setDir(direction)
+
+/turf/open/floor/holofloor/white
+	name = "white floor"
+	icon_state = "white"
+
 /turf/open/floor/holofloor/plating/burnmix
 	name = "burn-mix floor"
-	initial_gas_mix = "o2=2500;plasma=5000;TEMP=370"
+	initial_gas_mix = BURNMIX_ATMOS
 
 /turf/open/floor/holofloor/grass
 	gender = PLURAL
 	name = "lush grass"
-	icon_state = "grass"
+	icon_state = "grass0"
 	bullet_bounce_sound = null
+	tiled_dirt = FALSE
+
+/turf/open/floor/holofloor/grass/Initialize()
+	. = ..()
+	icon_state = "grass[rand(0,3)]"
 
 /turf/open/floor/holofloor/beach
 	gender = PLURAL
@@ -35,6 +66,7 @@
 	icon = 'icons/misc/beach.dmi'
 	icon_state = "sand"
 	bullet_bounce_sound = null
+	tiled_dirt = FALSE
 
 /turf/open/floor/holofloor/beach/coast_t
 	gender = NEUTER
@@ -52,8 +84,10 @@
 	bullet_sizzle = TRUE
 
 /turf/open/floor/holofloor/asteroid
-	name = "asteroid"
-	icon_state = "asteroid0"
+	gender = PLURAL
+	name = "asteroid sand"
+	icon_state = "asteroid"
+	tiled_dirt = FALSE
 
 /turf/open/floor/holofloor/asteroid/Initialize()
 	icon_state = "asteroid[rand(0, 12)]"
@@ -63,6 +97,7 @@
 	gender = PLURAL
 	name = "basalt"
 	icon_state = "basalt0"
+	tiled_dirt = FALSE
 
 /turf/open/floor/holofloor/basalt/Initialize()
 	. = ..()
@@ -84,6 +119,7 @@
 	icon = 'icons/turf/space.dmi'
 	icon_state = "speedspace_ns_1"
 	bullet_bounce_sound = null
+	tiled_dirt = FALSE
 
 /turf/open/floor/holofloor/hyperspace/Initialize()
 	icon_state = "speedspace_ns_[(x + 5*y + (y%2+1)*7)%15+1]"
@@ -97,21 +133,27 @@
 	name = "carpet"
 	desc = "Electrically inviting."
 	icon = 'icons/turf/floors/carpet.dmi'
-	icon_state = "carpet"
+	icon_state = "carpet-255"
+	base_icon_state = "carpet"
 	floor_tile = /obj/item/stack/tile/carpet
-	smooth = SMOOTH_TRUE
-	canSmoothWith = null
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_CARPET)
+	canSmoothWith = list(SMOOTH_GROUP_CARPET)
 	bullet_bounce_sound = null
+	tiled_dirt = FALSE
 
 /turf/open/floor/holofloor/carpet/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/update_icon), 1)
+	addtimer(CALLBACK(src, /atom/.proc/update_appearance), 1)
 
-/turf/open/floor/holofloor/carpet/update_icon()
-	if(!..())
-		return 0
-	if(intact)
-		queue_smooth(src)
+/turf/open/floor/holofloor/carpet/update_icon(updates=ALL)
+	. = ..()
+	if((updates & UPDATE_SMOOTHING) && intact && smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH(src)
+
+/turf/open/floor/holofloor/wood
+	icon_state = "wood"
+	tiled_dirt = FALSE
 
 /turf/open/floor/holofloor/snow
 	gender = PLURAL
@@ -122,12 +164,10 @@
 	slowdown = 2
 	bullet_sizzle = TRUE
 	bullet_bounce_sound = null
+	tiled_dirt = FALSE
 
 /turf/open/floor/holofloor/snow/cold
 	initial_gas_mix = "nob=7500;TEMP=2.7"
 
-/turf/open/floor/holofloor/asteroid
-	gender = PLURAL
-	name = "asteroid sand"
-	icon = 'icons/turf/floors.dmi'
-	icon_state = "asteroid"
+/turf/open/floor/holofloor/dark
+	icon_state = "darkfull"

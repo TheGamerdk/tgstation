@@ -3,12 +3,10 @@
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/pod_1)
 "G" = (
-/obj/structure/chair/shuttle{
+/obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/machinery/status_display{
-	pixel_x = 32
-	},
+/obj/machinery/status_display/evac/directional/east,
 /obj/machinery/computer/shuttle/pod{
 	pixel_x = -32
 	},
@@ -19,11 +17,7 @@
 	name = "Escape Pod Airlock"
 	},
 /obj/docking_port/mobile/pod{
-	port_direction = 2;
-	timid = 1;
-	dwidth = 1;
-	width = 3;
-	height = 4
+	port_direction = 2
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/pod_1)
@@ -32,18 +26,14 @@
 /turf/open/floor/plating,
 /area/shuttle/pod_1)
 "U" = (
-/obj/structure/chair/shuttle{
+/obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	pixel_x = 25
-	},
+/obj/item/radio/intercom/directional/east,
 /obj/item/storage/pod{
 	pixel_x = -26
 	},
-/obj/machinery/light/small{
-	dir = 8
-	},
+/obj/machinery/light/small/directional/west,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/pod_1)
 "Z" = (

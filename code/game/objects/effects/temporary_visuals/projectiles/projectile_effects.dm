@@ -1,12 +1,9 @@
 /obj/effect/projectile
 	name = "pew"
-	icon = 'icons/obj/projectiles.dmi'
+	icon = 'icons/obj/guns/projectiles.dmi'
 	icon_state = "nothing"
 	layer = ABOVE_MOB_LAYER
 	anchored = TRUE
-	light_power = 1
-	light_range = 2
-	light_color = "#00ffff"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = 0
 
@@ -48,8 +45,16 @@
 	appearance = look
 	scale_to(1,scaling, FALSE)
 	turn_to(angle_override, FALSE)
-	if(!isnull(new_loc))	//If you want to null it just delete it...
+	if(!isnull(new_loc)) //If you want to null it just delete it...
 		forceMove(new_loc)
 	for(var/i in 1 to increment)
 		pixel_x += round((sin(angle_override)+16*sin(angle_override)*2), 1)
 		pixel_y += round((cos(angle_override)+16*cos(angle_override)*2), 1)
+
+/obj/effect/projectile_lighting
+	var/owner
+
+/obj/effect/projectile_lighting/Initialize(mapload, color, range, intensity, owner_key)
+	. = ..()
+	set_light(range, intensity, color)
+	owner = owner_key

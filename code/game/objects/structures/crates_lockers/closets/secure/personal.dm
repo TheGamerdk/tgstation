@@ -25,6 +25,10 @@
 	icon_state = "cabinet"
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
+	open_sound = 'sound/machines/wooden_closet_open.ogg'
+	close_sound = 'sound/machines/wooden_closet_close.ogg'
+	open_sound_volume = 25
+	close_sound_volume = 50
 
 /obj/structure/closet/secure_closet/personal/cabinet/PopulateContents()
 	new /obj/item/storage/backpack/satchel/leather/withwallet( src )
@@ -35,19 +39,19 @@
 	var/obj/item/card/id/I = W.GetID()
 	if(istype(I))
 		if(broken)
-			to_chat(user, "<span class='danger'>It appears to be broken.</span>")
+			to_chat(user, span_danger("It appears to be broken."))
 			return
 		if(!I || !I.registered_name)
 			return
 		if(allowed(user) || !registered_name || (istype(I) && (registered_name == I.registered_name)))
 			//they can open all lockers, or nobody owns this, or they own this locker
 			locked = !locked
-			update_icon()
+			update_appearance()
 
 			if(!registered_name)
 				registered_name = I.registered_name
 				desc = "Owned by [I.registered_name]."
 		else
-			to_chat(user, "<span class='danger'>Access Denied.</span>")
+			to_chat(user, span_danger("Access Denied."))
 	else
 		return ..()
